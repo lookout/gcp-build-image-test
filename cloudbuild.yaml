@@ -1,0 +1,6 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/spinnaker-298120/lookoutbase/bionic:latest', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/spinnaker-298120/lookoutbase/bionic:latest']
+images: ['gcr.io/spinnaker-298120/lookoutbase/bionic:latest']

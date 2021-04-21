@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: image-builder
+  namespace: jenkins
+spec:
+  restartPolicy: Never 
+  serviceAccountName: image-builder
+  initContainers: 
+    - name: git-cloner
+      image: alpine/git
+      args:
+        - clone
+        - --single-branch
+        - --
+        - https://github.com/lookout/gcp-build-image-test.git
+        - /data
+      volumeMounts:
+      - mountPath: /data
+        name: gcp-build-image-test
+  containers:
+    - name: cloud-sdk
+      image: google/cloud-sdk:335.0.0
+      command: ["gcloud", "builds", "submit", "--config", "/data/cloudbuild.yaml", "/data"]
+      volumeMounts:  
+        - mountPath: /data
+          name: gcp-build-image-test
+  volumes:
+    - name: gcp-build-image-test
+      emptyDir: {}
+        
+

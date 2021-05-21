@@ -1,6 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/lke-pprd-image-factory-abcde/untrusted/lookout-base/bionic-cd:latest', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/lke-pprd-image-factory-abcde/untrusted/lookout-base/bionic-cd:latest']
-images: ['gcr.io/lke-pprd-image-factory-abcde/untrusted/lookout-base/bionic-cd:latest']
+  args: ['build', '--no-cache', '-t', '${_REGISTRY}/${_PROJECT}/${_REPOSITORY}/${_IMAGE_NAME}:${_TAG}', '.']
+images: ['${_REGISTRY}/${_PROJECT}/${_REPOSITORY}/${_IMAGE_NAME}:${_TAG}']
+logsBucket: gs://infosec-container-cloud-build-bucket 

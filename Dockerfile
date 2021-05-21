@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM gcr.io/lke-pprd-image-factory-abcde/trusted/lookout-base/bionic-infosec:latest
 MAINTAINER "dl-cd@lookout.com"
 
 RUN apt-get update \

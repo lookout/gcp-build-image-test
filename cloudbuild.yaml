@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/spinnaker-298120/lookoutbase/bionic:latest', '.']
+  args: ['build', '-t', 'gcr.io/lke-pprd-image-factory-abcde/untrusted/lookout-base/bionic-cd:latest', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/spinnaker-298120/lookoutbase/bionic:latest']
-images: ['gcr.io/spinnaker-298120/lookoutbase/bionic:latest']
+  args: ['push', 'gcr.io/lke-pprd-image-factory-abcde/untrusted/lookout-base/bionic-cd:latest']
+images: ['gcr.io/lke-pprd-image-factory-abcde/untrusted/lookout-base/bionic-cd:latest']
